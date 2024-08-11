@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<travelPackages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi="travel_data.xsd">
+    <?xml-stylesheet type="text/xsl" href="transform.xsl"?>
+    <package>
+        <id>1</id>
+        <name>European Adventure</name>
+        <description>A 10-day tour across Europe visiting top destinations.</description>
+        <price>3499.99</price>
+        <availability>Available</availability>
+    </package>
+    <package>
+        <id>2</id>
+        <name>Asian Wonders</name>
+        <description>Explore the wonders of Asia with our specially curated tour.</description>
+        <price>2599.75</price>
+        <availability>Limited Availability</availability>
+    </package>
+    <package>
+        <id>3</id>
+        <name>Caribbean Cruise</name>
+        <description>Relax on a luxurious cruise through the Caribbean islands.</description>
+        <price>2999.00</price>
+        <availability>Sold Out</availability>
+    </package>
+    <package>
+        <id>4</id>
+        <name>Japanese Serenity</name>
+        <description>Immerse yourself in the tranquil beauty and rich culture of Japan.</description>
+        <price>2899.00</price>
+        <availability>Available</availability>
+    </package>
+    
+    <package>
+        <id>5</id>
+        <name>Safari Adventure</name>
+        <description>Embark on a thrilling safari and witness the majestic wildlife of Africa.</description>
+        <price>3599.00</price>
+        <availability>Limited Availability</availability>
+    </package>
+    <package>
+        <id>6</id>
+        <name>Australian Escape</name>
+        <description>Discover the natural beauty and unique wildlife of Australia.</description>
+        <price>2799.00</price>
+        <availability>Limited Availability</availability>
+    </package>
+    
+    <package>
+        <id>7</id>
+        <name>South American Expedition</name>
+        <description>Adventure through the diverse landscapes and cultures of South America.</description>
+        <price>3199.00</price>
+        <availability>Available</availability>
+    </package>
+    
+    <package>
+        <id>8</id>
+        <name>Alaskan Wilderness</name>
+        <description>Enjoy breathtaking views and thrilling activities in the Alaskan wilderness.</description>
+        <price>3299.00</price>
+        <availability>Sold Out</availability>
+    </package>
+</travelPackages>

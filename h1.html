@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Packages</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="fileInput" />
+    <br/><br/>
+    <table id="xmlTable">
+        <thead>
+            <tr>
+                <!-- Header will be inserted dynamically -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted dynamically -->
+        </tbody>
+    </table>
+    <script> document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(e.target.result, 'text/xml');
+    
+                // Get the table and clear previous content
+                const table = document.getElementById('xmlTable');
+                const thead = table.getElementsByTagName('thead')[0];
+                const tbody = table.getElementsByTagName('tbody')[0];
+                thead.innerHTML = '';
+                tbody.innerHTML = '';
+    
+                // Function to process package elements
+                function processPackages(packages) {
+                    Array.from(packages).forEach(package => {
+                        const row = document.createElement('tr');
+                        Array.from(package.children).forEach(cell => {
+                            const td = document.createElement('td');
+                            td.textContent = cell.textContent;
+                            row.appendChild(td);
+                        });
+                        tbody.appendChild(row);
+                    });
+                }
+    
+                // Extract column headers
+                const firstPackage = xmlDoc.querySelector('package');
+                if (firstPackage) {
+                    const headers = Array.from(firstPackage.children).map(node => node.nodeName);
+                    const headerRow = document.createElement('tr');
+                    headers.forEach(header => {
+                        const th = document.createElement('th');
+                        th.textContent = header;
+                        headerRow.appendChild(th);
+                    });
+                    thead.appendChild(headerRow);
+                }
+    
+                // Process package elements in the root
+                const rootPackages = xmlDoc.getElementsByTagName('package');
+                processPackages(rootPackages);
+    
+                // Process nested package elements inside <packages>
+                const nestedPackages = xmlDoc.getElementsByTagName('packages');
+                Array.from(nestedPackages).forEach(packages => {
+                    const nestedPackages = packages.getElementsByTagName('package');
+                    processPackages(nestedPackages);
+                });
+            };
+            reader.readAsText(file);
+        }
+    });
+    </script>
+</body>
+</html>
